@@ -1,17 +1,22 @@
-from app.car import car
+from app.car.car import Car
+class car_factory(Car):
+    def __init__(self):
+        self.name = name=None
+        self.model = model=None
+        self.storage = []
 
-class car_factory(car):
-    def __init__(self,
-        name,
-        model,
-        year,
-        id
-    ):
+    def add(self, name, model, year):
         self.name = name
         self.model = model
-        self.year = year
-        self.id = id
+        car = Car(name, model, year)
+        self.storage.append(car)
 
-
+    def list(self):
+        for car in self.storage:
+            print(f'A {car.name} {car.model}\nwas made in {car.year} year\nwith a {car._id} id\n')
+    def delete(self, id):
+        for car in self.storage:
+            if car._id == id:
+                self.storage.remove(car)
 
 
